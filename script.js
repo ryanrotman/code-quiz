@@ -1,9 +1,38 @@
-// Setting variables for elements of quiz
-var quizSection = document.querySelector(".jumbotron");
+// Setting global variables for elements of quiz
+var beginQuiz = document.querySelector(".jumbotron");
+var quizSection = document.querySelector(".question-container")
 var highScores = document.querySelector(".navbar-brand");
 var timerEl = document.querySelector("#timer");
 var buttonEl = document.querySelector(".btn");
-var secondsLeft = 10;
+var secondsLeft = 50;
+var currentIndex = 0;
+
+// Array with multiple objects to hold all quiz questions and answers
+var questionArr = [{
+    question: "Question #1",
+    answers: ["a", "b", "c", "d"],
+    correctAnswer: ""
+},
+{
+    question: "Question #2",
+    answers: ["a", "b", "c", "d"],
+    correctAnswer: ""
+},
+{
+    question: "Question #3",
+    answers: ["a", "b", "c", "d"],
+    correctAnswer: ""
+},
+{
+    question: "Question #4",
+    answers: ["a", "b", "c", "d"],
+    correctAnswer: ""
+},
+{
+    question: "Question #5",
+    answers: ["a", "b", "c", "d"],
+    correctAnswer: ""
+}];
 
 // Set the timer
 function setTime() {
@@ -12,7 +41,7 @@ function setTime() {
         secondsLeft--;
         timerEl.innerHTML = secondsLeft + " seconds left";
         console.log(secondsLeft);
-        if (secondsLeft === 0) {
+        if (secondsLeft <= 0) {
             setTimeout(function () {
                 alert("Game is over.")
             }, 100);
@@ -72,6 +101,6 @@ function setTime() {
 // Add event listener to the button to begin the quiz as well as the timer
 buttonEl.addEventListener("click", function () {
     setTime();
-    document.querySelector(".question-container").setAttribute("style","display: block !important");
-    console.log("begin")
+    beginQuiz.setAttribute("style", "display: none");
+    quizSection.setAttribute("style","display: block");
 });
