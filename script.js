@@ -22,9 +22,27 @@ function setTime() {
     }, 1000);
 }
 
+
 // Set quiz questions and answers
     // How is this set up? Arrays?
+        // One main array with multiple objects
+        //var questionArr =[
+            //{question: "abcd"
+            //choices:["a","b","c","d"]
+            //answer:"a"
+            //},
+            //{object2}
+        //]
+            // each object will contain the question, the choices, and the answer
     // All done on one page, so show/hide properties?
+        // use styling to display: none and display: block
+        // create buttons dynamically using javascript by looping through the array
+            // var currentIndex = 0 global var
+            // questionArr[0].question
+            // questionArr[0].choices.forEach() or using another for loop
+
+        //when user clicks the answer: currentIndex++, compare answer to choices, decrease time, scoring.
+        //when time <= 0: game is over, move to initial container
     // Need text field for question and buttons for answers
 
 // Show first question when button is clicked (along with starting the timer)
@@ -42,15 +60,18 @@ function setTime() {
     // Is score based on points or time?
     // localStorage.setItem()
 
-// Add button to return back to the start of the quiz
-
-// Add button to clear all highscores
-    // Highscores saved in local storage
-    // localStorage.clear()
+// View highscores page
+    // localStorage.getItem()
+    // Add button to return back to the start of the quiz
+    // Add button to clear all highscores
+        // Highscores saved in local storage
+        // localStorage.clear()
 
 // Will have multiple buttons all with .addEventListener("click") to them
 
 // Add event listener to the button to begin the quiz as well as the timer
 buttonEl.addEventListener("click", function () {
     setTime();
+    document.querySelector(".question-container").setAttribute("style","display: block !important");
+    console.log("begin")
 });
