@@ -1,46 +1,52 @@
 // Setting global variables for elements of quiz
 var beginQuiz = document.querySelector(".jumbotron");
-var quizSection = document.querySelector(".question-container")
+var quizSection = document.querySelector(".question-container");
+var quizQuestion = document.querySelector("#quiz-question");
+var initialsForScore = document.querySelector(".initial-container");
+var highScoresList = document.querySelector(".highscore-container");
 var highScores = document.querySelector(".navbar-brand");
 var timerEl = document.querySelector("#timer");
-var buttonEl = document.querySelector(".btn");
-var secondsLeft = 50;
+var beginQuizBtn = document.querySelector("#begin");
+var choiceABtn = document.querySelector("#choiceA");
+var choiceBBtn = document.querySelector("#choiceB");
+var choiceCBtn = document.querySelector("#choiceC");
+var choiceDBtn = document.querySelector("#choiceD");
+var secondsLeft = 75;
 var currentIndex = 0;
 
 // Array with multiple objects to hold all quiz questions and answers
 var questionArr = [{
-    question: "Question #1",
-    answers: ["a", "b", "c", "d"],
+    question: "What is JavaScripts role in programming?",
+    answers: ["a: To define content", "b: To format content", "c: To create dynamic web applications", "d: Where you write your code"],
+    correctAnswer: "C"
+},
+{
+    question: "Question 2",
+    answers: ["a: this is answer a", "b: this is answer b", "c: this is answer c", "d: this is answer d"],
     correctAnswer: ""
 },
 {
-    question: "Question #2",
-    answers: ["a", "b", "c", "d"],
+    question: "Question 3",
+    answers: ["a: this is answer a", "b: this is answer b", "c: this is answer c", "d: this is answer d"],
     correctAnswer: ""
 },
 {
-    question: "Question #3",
-    answers: ["a", "b", "c", "d"],
+    question: "Question 4",
+    answers: ["a: this is answer a", "b: this is answer b", "c: this is answer c", "d: this is answer d"],
     correctAnswer: ""
 },
 {
-    question: "Question #4",
-    answers: ["a", "b", "c", "d"],
-    correctAnswer: ""
-},
-{
-    question: "Question #5",
-    answers: ["a", "b", "c", "d"],
+    question: "Question 5",
+    answers: ["a: this is answer a", "b: this is answer b", "c: this is answer c", "d: this is answer d"],
     correctAnswer: ""
 }];
 
 // Set the timer
 function setTime() {
-    secondsLeft = 10
     var timerInterval = setInterval(function () {
         secondsLeft--;
         timerEl.innerHTML = secondsLeft + " seconds left";
-        console.log(secondsLeft);
+        // console.log(secondsLeft);
         if (secondsLeft <= 0) {
             setTimeout(function () {
                 alert("Game is over.")
@@ -51,6 +57,20 @@ function setTime() {
     }, 1000);
 }
 
+// Set the questions and answer choices for the quiz
+function setQuestion() {
+    quizQuestion.textContent = questionArr[currentIndex].question;
+    choiceABtn.innerHTML = questionArr[currentIndex].answers[0];
+    choiceBBtn.innerHTML = questionArr[currentIndex].answers[1];
+    choiceCBtn.innerHTML = questionArr[currentIndex].answers[2];
+    choiceDBtn.innerHTML = questionArr[currentIndex].answers[3];
+}
+
+// Get and check the user's answer againt the correct answer from array
+function checkAnswer(event) {
+    var userClicked = event.target.dataset.value;
+    console.log("User clicked: " + userClicked);
+}
 
 // Set quiz questions and answers
     // How is this set up? Arrays?
@@ -99,8 +119,14 @@ function setTime() {
 // Will have multiple buttons all with .addEventListener("click") to them
 
 // Add event listener to the button to begin the quiz as well as the timer
-buttonEl.addEventListener("click", function () {
+beginQuizBtn.addEventListener("click", function () {
     setTime();
     beginQuiz.setAttribute("style", "display: none");
-    quizSection.setAttribute("style","display: block");
+    quizSection.setAttribute("style","display: block !important");
+    setQuestion();
 });
+// Add event listener to each answer choice button
+choiceABtn.addEventListener("click", checkAnswer());
+choiceBBtn.addEventListener("click", checkAnswer());
+choiceCBtn.addEventListener("click", checkAnswer());
+choiceDBtn.addEventListener("click", checkAnswer());

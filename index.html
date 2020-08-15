@@ -8,8 +8,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <!-- Additional CSS sytlesheet -->
         <link rel="stylesheet" href="./style.css">
-        <!-- Font Awesome Link -->
-        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <title>Code Quiz</title>
     </head>
     <body>
@@ -17,7 +15,7 @@
         <header>
             <nav class="navbar navbar-light bg-light">
                 <a class="navbar-brand" href="#">View Highscores</a>
-                <span class="navbar-text" id="timer">Timer</span>
+                <span class="navbar-text" id="timer"></span>
             </nav>
         </header>
         <!-- Container that holds jumbotron with quiz info and start button and the quiz when it starts -->
@@ -27,11 +25,22 @@
                 <p class="lead">Test your JavaScript coding knowledge with this timed challenge!</p>
                 <hr class="my-4">
                 <p>Click the button to begin the quiz!</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Begin Quiz</a>
+                <a class="btn btn-primary btn-lg" id="begin" href="#" role="button">Begin Quiz</a>
             </div>
         </section>
-        <!-- Empty container for the quiz questions and buttons for answers -->
+        <!-- Container for the quiz questions and buttons for answers -->
         <section class="question-container container jumbotron text-center d-none">
+            <div>
+                <!-- This is where the questions will go -->
+                <h4 id="quiz-question"></h4>
+            </div>
+            <div id="choices">
+                <!-- This is where the buttons will go for answer choices -->
+                <button type="button" class="btn btn-primary" id="choiceA" value="A"></button>
+                <button type="button" class="btn btn-primary" id="choiceB" value="B"></button>
+                <button type="button" class="btn btn-primary" id="choiceC" value="C"></button>
+                <button type="button" class="btn btn-primary" id="choiceD" value="D"></button>
+            </div>
         </section>
         <!-- Empty container for the entering of initials and score when game is over -->
         <section class="initial-container container jumbotron text-center d-none">
