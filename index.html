@@ -43,16 +43,25 @@
             </div>
         </section>
         <!-- Empty container for the entering of initials and score when game is over -->
-        <section class="initial-container container jumbotron text-center d-block">
+        <section class="initial-container container jumbotron text-center d-none">
             <div>
                 <p>Thanks for testing your knowledge!</p>
                 <p>Enter your initials here to save your score!</p>
+                <p><i>&#40Your score is how many seconds you have remaining&#41</i></p>
+                <!-- Input field for quiz takers initials -->
                 <input type="text" id="initials" placeholder="Initials"><br><br>
-                <input type="submit" id="scoresubmit">
+                <!-- Submit button to submit initials and score to local storage -->
+                <input type="submit" id="initialssubmitBtn">
             </div>
         </section>
         <!-- Empty container for the list of high scores -->
         <section class="highscore-container container jumbotron text-center d-none">
+            <div>
+                <h4>Highscores!</h4>
+            </div>
+            <!-- Empty div for the score list -->
+            <div id="scorelist">                
+            </div>
         </section>
 
         <!-- Optional JavaScript -->
