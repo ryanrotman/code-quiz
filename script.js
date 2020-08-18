@@ -15,6 +15,7 @@ var choiceDBtn = document.querySelector("#choiceD");
 var initials = document.querySelector("#initials");
 var initialsInputBtn = document.querySelector("#initialssubmitBtn");
 var restartQuizBtn =document.querySelector("#restartQuiz");
+var clearScoresBtn = document.querySelector("#clearScores");
 var secondsLeft = 75;
 var currentIndex = 0;
 var timerInterval = 0;
@@ -111,7 +112,6 @@ function logInitials(event) {
         if (existingEntries == null) {
             existingEntries = [];
         }
-        localStorage.setItem("userInput", JSON.stringify(userInput));
         existingEntries.push(userInput);
         localStorage.setItem("allInput", JSON.stringify(existingEntries));
         // Switch from initials input container to highscore list container
@@ -133,6 +133,10 @@ function logInitials(event) {
 
 function restartQuiz() {
     location.reload();
+};
+
+function clearScores() {
+    localStorage.clear();
 };
 
 // TODO:
@@ -158,3 +162,6 @@ initialsInputBtn.addEventListener("click", logInitials);
 
 // Event listener for button to restart the quiz
 restartQuizBtn.addEventListener("click", restartQuiz);
+
+// Event listener for button to clear scores from local storage
+clearScoresBtn.addEventListener("click", clearScores);
