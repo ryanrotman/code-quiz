@@ -14,6 +14,7 @@ var choiceCBtn = document.querySelector("#choiceC");
 var choiceDBtn = document.querySelector("#choiceD");
 var initials = document.querySelector("#initials");
 var initialsInputBtn = document.querySelector("#initialssubmitBtn");
+var restartQuizBtn =document.querySelector("#restartQuiz");
 var secondsLeft = 75;
 var currentIndex = 0;
 var timerInterval = 0;
@@ -120,7 +121,11 @@ function logInitials(event) {
     } else {
         alert("Please enter your initials.");
     }
-}
+};
+
+function restartQuiz() {
+    location.reload();
+};
 
 // TODO:
     // View highscores page
@@ -145,3 +150,6 @@ choiceDBtn.addEventListener("click", checkAnswer);
 
 // Event listener for submit button to add initials and score to local storage
 initialsInputBtn.addEventListener("click", logInitials);
+
+// Event listener for button to restart the quiz
+restartQuizBtn.addEventListener("click", restartQuiz);
