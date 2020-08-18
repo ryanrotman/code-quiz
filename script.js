@@ -114,10 +114,18 @@ function logInitials(event) {
         localStorage.setItem("userInput", JSON.stringify(userInput));
         existingEntries.push(userInput);
         localStorage.setItem("allInput", JSON.stringify(existingEntries));
-        // initials.value = "";
+        // Switch from initials input container to highscore list container
         initialsForScore.setAttribute("style", "display: none");
         highScoreSection.setAttribute("style", "display: block !important");
         timerEl.innerHTML = "";
+        existingEntries = JSON.parse(localStorage.getItem("allInput"));
+        // Render the highscores list to the page
+        for (var i = 0; i < existingEntries.length; i++) {
+            var highscore = existingEntries[i];
+            var li = document.createElement("li");
+            li.textContent = highscore;
+            highScoresList.appendChild(li);
+        }
     } else {
         alert("Please enter your initials.");
     }
@@ -128,9 +136,6 @@ function restartQuiz() {
 };
 
 // TODO:
-    // View highscores page
-    // localStorage.getItem()
-    // Add button to return back to the start of the quiz - location.reload();
     // Add button to clear all highscores localstorage.clear();
     // localStorage.clear()
 
