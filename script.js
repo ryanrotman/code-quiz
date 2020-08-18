@@ -3,7 +3,7 @@ var beginQuiz = document.querySelector(".jumbotron");
 var quizSection = document.querySelector(".question-container");
 var quizQuestion = document.querySelector("#quiz-question");
 var initialsForScore = document.querySelector(".initial-container");
-var highScoresList = document.querySelector(".highscore-container");
+var highScoresList = document.querySelector("#scorelist");
 var highScores = document.querySelector(".navbar-brand");
 var timerEl = document.querySelector("#timer");
 var beginQuizBtn = document.querySelector("#begin");
@@ -11,10 +11,11 @@ var choiceABtn = document.querySelector("#choiceA");
 var choiceBBtn = document.querySelector("#choiceB");
 var choiceCBtn = document.querySelector("#choiceC");
 var choiceDBtn = document.querySelector("#choiceD");
+var initials = document.querySelector("#initials");
+var initialsInputBtn = document.querySelector("#initialssubmitBtn");
 var secondsLeft = 75;
 var currentIndex = 0;
 var timerInterval = 0;
-var initials = "";
 var listOfHighscores = []
 
 // Array with multiple objects to hold all quiz questions and answers
@@ -70,8 +71,9 @@ function setQuestion() {
         choiceDBtn.innerHTML = questionArr[currentIndex].answers[3];
     } else {
         clearInterval(timerInterval);
-        initials = prompt("Please input your initials to register your score.")
-        logInitials();
+        // initials = prompt("Please input your initials to register your score.")
+        quizSection.setAttribute("style", "display: none");
+        initialsForScore.setAttribute("style", "display: block !important");
     }
 };
 
@@ -91,9 +93,26 @@ function checkAnswer(event) {
 };
 
 // Log the initials and score into local storage
-function logInitials() {
-    localStorage.setItem("initials", initials);
-    localStorage.setItem("score", secondsLeft);
+function logInitials(event) {
+    event.preventDefault();
+    var userInitials = initials.value;
+    var userInput = {
+        "initials": userInitials,
+        "score": secondsLeft,
+    };
+    console.log("User Initials: " + userInitials);
+    console.log("User score: " + secondsLeft);
+    if (userInitials) {
+        var existingEntries = JSON.parse(localStorage.getItem("allInput"));
+        if (existingEntries == null) {
+            existingEntries = [];
+        }
+        localStorage.setItem("userInput", JSON.stringify(userInput));
+        existingEntries.push(userInput);
+        localStorage.setItem("allInput", JSON.stringify(existingEntries));
+    } else {
+        alert("Please enter your initials.");
+    }
 }
 
 // TODO:
@@ -120,3 +139,6 @@ choiceABtn.addEventListener("click", checkAnswer);
 choiceBBtn.addEventListener("click", checkAnswer);
 choiceCBtn.addEventListener("click", checkAnswer);
 choiceDBtn.addEventListener("click", checkAnswer);
+
+// Event listener for submit button to add initials and score to local storage
+initialsInputBtn.addEventListener("click", logInitials);
