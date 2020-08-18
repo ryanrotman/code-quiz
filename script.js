@@ -3,6 +3,7 @@ var beginQuiz = document.querySelector(".jumbotron");
 var quizSection = document.querySelector(".question-container");
 var quizQuestion = document.querySelector("#quiz-question");
 var initialsForScore = document.querySelector(".initial-container");
+var highScoreSection = document.querySelector(".highscore-container");
 var highScoresList = document.querySelector("#scorelist");
 var highScores = document.querySelector(".navbar-brand");
 var timerEl = document.querySelector("#timer");
@@ -70,10 +71,12 @@ function setQuestion() {
         choiceCBtn.innerHTML = questionArr[currentIndex].answers[2];
         choiceDBtn.innerHTML = questionArr[currentIndex].answers[3];
     } else {
-        clearInterval(timerInterval);
-        // initials = prompt("Please input your initials to register your score.")
-        quizSection.setAttribute("style", "display: none");
-        initialsForScore.setAttribute("style", "display: block !important");
+        setTimeout(function () {
+            clearInterval(timerInterval);
+            // initials = prompt("Please input your initials to register your score.")
+            quizSection.setAttribute("style", "display: none");
+            initialsForScore.setAttribute("style", "display: block !important");
+        }, 500);
     }
 };
 
@@ -92,7 +95,7 @@ function checkAnswer(event) {
     }
 };
 
-// Log the initials and score into local storage
+// Log the initials and score into local storage then view highscore page with list
 function logInitials(event) {
     event.preventDefault();
     var userInitials = initials.value;
@@ -110,20 +113,20 @@ function logInitials(event) {
         localStorage.setItem("userInput", JSON.stringify(userInput));
         existingEntries.push(userInput);
         localStorage.setItem("allInput", JSON.stringify(existingEntries));
+        // initials.value = "";
+        initialsForScore.setAttribute("style", "display: none");
+        highScoreSection.setAttribute("style", "display: block !important");
+        timerEl.innerHTML = "";
     } else {
         alert("Please enter your initials.");
     }
 }
 
 // TODO:
-    // When all questions are answered or timer reaches 0, allow for saving name and score
-        // function storeHighscores() {
-        // }
     // View highscores page
     // localStorage.getItem()
-    // Add button to return back to the start of the quiz
-    // Add button to clear all highscores
-    // Highscores saved in local storage
+    // Add button to return back to the start of the quiz - location.reload();
+    // Add button to clear all highscores localstorage.clear();
     // localStorage.clear()
 
 // Add event listener to the button to begin the quiz as well as the timer
