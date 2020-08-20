@@ -176,3 +176,9 @@ clearScoresBtn.addEventListener("click", clearScores);
 
 // Event listener for View Highscores Button
 highScores.addEventListener("click", viewHighScores);
+
+// TODO:
+    // separate logging initials and rendering the highscores list to separate functions as when clicking the "View Highscores" link, it also needs to render the list to the page
+    // adjust column spacing and width
+        // to hopefully align all buttons on the quiz to center and one per line
+        // place the ordered list number next to the content of the <li>
