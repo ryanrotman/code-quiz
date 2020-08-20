@@ -113,6 +113,7 @@ function logInitials(event) {
             existingEntries = [];
         }
         existingEntries.push(userInput);
+        console.log(existingEntries);
         localStorage.setItem("allInput", JSON.stringify(existingEntries));
         // Switch from initials input container to highscore list container
         initialsForScore.setAttribute("style", "display: none");
@@ -123,7 +124,7 @@ function logInitials(event) {
         for (var i = 0; i < existingEntries.length; i++) {
             var highscore = existingEntries[i];
             var li = document.createElement("li");
-            li.textContent = highscore;
+            li.textContent = highscore.initials + ": " + highscore.score;
             highScoresList.appendChild(li);
         }
     } else {
@@ -131,17 +132,24 @@ function logInitials(event) {
     }
 };
 
+// Function to restart the quiz
 function restartQuiz() {
     location.reload();
 };
 
+// Function to clear the scores from storage and the page
 function clearScores() {
     localStorage.clear();
+    highScoresList.innerHTML = "";
 };
 
-// TODO:
-    // Add button to clear all highscores localstorage.clear();
-    // localStorage.clear()
+// Function to view the highscores list from the header
+function viewHighScores() {
+    beginQuiz.setAttribute("style", "display: none");
+    quizSection.setAttribute("style", "display: none");
+    initialsForScore.setAttribute("style", "display: none");
+    highScoreSection.setAttribute("style", "display: block !important");
+}
 
 // Add event listener to the button to begin the quiz as well as the timer
 beginQuizBtn.addEventListener("click", function () {
@@ -165,3 +173,6 @@ restartQuizBtn.addEventListener("click", restartQuiz);
 
 // Event listener for button to clear scores from local storage
 clearScoresBtn.addEventListener("click", clearScores);
+
+// Event listener for View Highscores Button
+highScores.addEventListener("click", viewHighScores);
