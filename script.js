@@ -115,21 +115,24 @@ function logInitials(event) {
         existingEntries.push(userInput);
         console.log(existingEntries);
         localStorage.setItem("allInput", JSON.stringify(existingEntries));
-        // Switch from initials input container to highscore list container
-        initialsForScore.setAttribute("style", "display: none");
-        highScoreSection.setAttribute("style", "display: block !important");
-        timerEl.innerHTML = "";
-        existingEntries = JSON.parse(localStorage.getItem("allInput"));
-        // Render the highscores list to the page
-        for (var i = 0; i < existingEntries.length; i++) {
-            var highscore = existingEntries[i];
-            var li = document.createElement("li");
-            li.textContent = highscore.initials + ": " + highscore.score;
-            highScoresList.appendChild(li);
-        }
+        renderHighscores();
     } else {
         alert("Please enter your initials.");
     }
+};
+
+// Function to render high scores
+function renderHighscores() {
+    initialsForScore.setAttribute("style", "display: none");
+    highScoreSection.setAttribute("style", "display: block !important");
+    timerEl.innerHTML = "";
+    listOfHighscores = JSON.parse(localStorage.getItem("allInput"));
+    for (var i = 0; i < listOfHighscores.length; i++) {
+        var highscore = listOfHighscores[i];
+        var li = document.createElement("li");
+        li.textContent = highscore.initials + ": " + highscore.score;
+        highScoresList.appendChild(li);
+    };
 };
 
 // Function to restart the quiz
@@ -149,6 +152,7 @@ function viewHighScores() {
     quizSection.setAttribute("style", "display: none");
     initialsForScore.setAttribute("style", "display: none");
     highScoreSection.setAttribute("style", "display: block !important");
+    renderHighscores();
 }
 
 // Add event listener to the button to begin the quiz as well as the timer
@@ -178,7 +182,6 @@ clearScoresBtn.addEventListener("click", clearScores);
 highScores.addEventListener("click", viewHighScores);
 
 // TODO:
-    // separate logging initials and rendering the highscores list to separate functions as when clicking the "View Highscores" link, it also needs to render the list to the page
     // adjust column spacing and width
         // to hopefully align all buttons on the quiz to center and one per line
         // place the ordered list number next to the content of the <li>
