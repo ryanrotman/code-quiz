@@ -182,6 +182,4 @@ clearScoresBtn.addEventListener("click", clearScores);
 highScores.addEventListener("click", viewHighScores);
 
 // TODO:
-    // adjust column spacing and width
-        // to hopefully align all buttons on the quiz to center and one per line
-        // place the ordered list number next to the content of the <li>
+    // is there a way to make the input function default to all caps especially on a mobile device?
