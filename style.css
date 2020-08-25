@@ -5,3 +5,7 @@
 .container {
     margin-top: 32px;
 }
+
+#scorelist {
+    padding: 0;
+}
