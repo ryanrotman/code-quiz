@@ -6,6 +6,10 @@
     margin-top: 32px;
 }
 
+.btn {
+    margin: 5px;
+}
+
 #scorelist {
     padding: 0;
 }
