@@ -1,9 +1,9 @@
-# Homework 4: Code Quiz
+# Code Quiz
 
 ## Description
-This repository holds the fourth homework assignment for [The Coding Boot Camp](https://techbootcamps.utexas.edu/coding/) through the University of Texas at Austin's Center for Professional Education.
+<!-- This repository holds the fourth homework assignment for [The Coding Boot Camp](https://techbootcamps.utexas.edu/coding/) through the University of Texas at Austin's Center for Professional Education. -->
 
-This project used JavaScript to create an app that ran through a quiz. This project used a responsive website design through bootstrap and questions that were generated through the use of JavaScript to populate as a user interacted with the quiz. It highlights the use of changing display settings through functions, running functions that would populate the questions and answer choices through an array of objects, if statements to check the conditions of the answer clicked, timer functions to run the quiz but also take away time if an answer was incorrect, as well as local storage to store a users initials and scores.
+This is a Coding Quiz application created using responsive design elements through bootstrap and rendering questions generated through the use of JavaScript as a user interacts with the quiz. It highlights the use of changing display settings through functions, running functions that would populate the questions and answer choices through an array of objects, if statements to check the conditions of the answer clicked, timer functions to run the quiz but also take away time if an answer was incorrect, as well as local storage to store a users initials and scores.
 
 
 ## Notes
@@ -39,4 +39,4 @@ Initials and Score stored in the inspector
 
 
 ## Link
-Github Pages Link: [https://ryanrotman.github.io/homework-4-code-quiz/](https://ryanrotman.github.io/homework-4-code-quiz/)
+Github Pages Link: [https://ryanrotman.github.io/code-quiz/](https://ryanrotman.github.io/code-quiz/)
